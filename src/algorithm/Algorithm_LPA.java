@@ -1,4 +1,4 @@
-package algorithm;
+﻿package algorithm;
 
 public class Algorithm_LPA {
 	public boolean execute(){

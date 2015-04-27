@@ -1,28 +1,28 @@
-package data;
+ï»¿package data;
 
 import java.util.HashMap;
 
 public class Node {
   private static final String TAG = "Node";
   
-  /**¸Ã½ÚµãÔÚ¹ØÁª¾ØÕóÖĞµÄ¶ÔÓ¦ÏÂ±ê*/
+  /**è¯¥èŠ‚ç‚¹åœ¨å…³è”çŸ©é˜µä¸­çš„å¯¹åº”ä¸‹æ ‡*/
   public int id;
-  /**¸Ã½Úµã´ú±íµÄÎ¢²©ÓÃ»§Ãû³Æ*/
+  /**è¯¥èŠ‚ç‚¹ä»£è¡¨çš„å¾®åšç”¨æˆ·åç§°*/
   public String username;
   /**
-   * ÖÖ×Ó½ÚµãÇó½âÇ°£º¸Ã½ÚµãµÄÔ­Ê¼±êÇ©ÁĞ±í£»
-   * ÖÖ×Ó½ÚµãÇó½âºó£º¸Ã½Úµã±»´òÉÏµÄ±êÇ©ÁĞ±í
+   * ç§å­èŠ‚ç‚¹æ±‚è§£å‰ï¼šè¯¥èŠ‚ç‚¹çš„åŸå§‹æ ‡ç­¾åˆ—è¡¨ï¼›
+   * ç§å­èŠ‚ç‚¹æ±‚è§£åï¼šè¯¥èŠ‚ç‚¹è¢«æ‰“ä¸Šçš„æ ‡ç­¾åˆ—è¡¨
    */
   public HashMap<String,Integer> label_list = new HashMap<String, Integer>();
-  /**¸Ã½Úµã³õÊ¼±êÇ©*/
+  /**è¯¥èŠ‚ç‚¹åˆå§‹æ ‡ç­¾*/
   public String label;
-  /**½Úµã¶ÈÊı*/
+  /**èŠ‚ç‚¹åº¦æ•°*/
   public int degree;
   
   /**
-   * Ïò±êÇ©ÁĞ±íÖĞÌí¼ÓÒ»¸ö±êÇ©£¬Èç¹û¸Ã±êÇ©´æÔÚ£¬Ôò±êÇ©¼ÆÊı¼Ó1
-   * @param newLabel ±êÇ©Ãû³Æ
-   * @return Ôİ¶¨Îªtrue
+   * å‘æ ‡ç­¾åˆ—è¡¨ä¸­æ·»åŠ ä¸€ä¸ªæ ‡ç­¾ï¼Œå¦‚æœè¯¥æ ‡ç­¾å­˜åœ¨ï¼Œåˆ™æ ‡ç­¾è®¡æ•°åŠ 1
+   * @param newLabel æ ‡ç­¾åç§°
+   * @return æš‚å®šä¸ºtrue
    */
   public boolean addLabel(String newLabel)
   {
@@ -37,8 +37,8 @@ public class Node {
   }
   
   /**
-   * Çå¿Õ±êÇ©ÁĞ±íµÄËùÓĞ±êÇ©
-   * @return Ôİ¶¨Îªtrue
+   * æ¸…ç©ºæ ‡ç­¾åˆ—è¡¨çš„æ‰€æœ‰æ ‡ç­¾
+   * @return æš‚å®šä¸ºtrue
    */
   public boolean freeAllLabel(){
 	  label_list.clear();

@@ -1,4 +1,4 @@
-package algorithm;
+﻿package algorithm;
 
 public class Algorithm_InitLable {
 	public boolean execute(){

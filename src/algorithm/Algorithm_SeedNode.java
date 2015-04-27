@@ -1,4 +1,4 @@
-package algorithm;
+ï»¿package algorithm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,49 +7,49 @@ import data.Node;
 
 public class Algorithm_SeedNode {
 	/**
-	 * Çó½âÖÖ×Ó½Úµã£¬²¢ÏòÖÖ×Ó½ÚµãÖĞ¼ÓÈë¶ÔÓ¦µÄÖÖ×Ó±êÇ©
-	 * @param nodes_array Ö´ĞĞÇ°£ºËùÓĞ½ÚµãÁĞ±í£»Ö´ĞĞºó£ºÁĞ±íÖĞµÄÖÖ×Ó½ÚµãÒÑ°üº¬ÖÖ×Ó±êÇ©
-	 * @param link_matrix ½Úµã¹ØÁª¾ØÕó
-	 * @param seed_label ÖÖ×Ó±êÇ©Ãû³ÆÁĞ±í
-	 * @param x Æ½»¬Òò×Ó£¬ÔİÊ±½¨Òé´óÓÚ0.5£»Ñ¡È¡ÖÖ×Ó½ÚµãÊ±£¬xÔ½´óÔò½Úµã¶ÈÊıÔ½ÖØÒª£¬xÔ½Ğ¡ÔòÖÖ×Ó±êÇ©ÔÚÔ­Ê¼±êÇ©ÖĞ³öÏÖµÄ´ÎÊıÔ½ÖØÒª
-	 * @return ÖÖ×Ó½ÚµãÔÚ nodes_array ÖĞµÄ¶ÔÓ¦ÏÂ±êÁĞ±í
+	 * æ±‚è§£ç§å­èŠ‚ç‚¹ï¼Œå¹¶å‘ç§å­èŠ‚ç‚¹ä¸­åŠ å…¥å¯¹åº”çš„ç§å­æ ‡ç­¾
+	 * @param nodes_array æ‰§è¡Œå‰ï¼šæ‰€æœ‰èŠ‚ç‚¹åˆ—è¡¨ï¼›æ‰§è¡Œåï¼šåˆ—è¡¨ä¸­çš„ç§å­èŠ‚ç‚¹å·²åŒ…å«ç§å­æ ‡ç­¾
+	 * @param link_matrix èŠ‚ç‚¹å…³è”çŸ©é˜µ
+	 * @param seed_label ç§å­æ ‡ç­¾åç§°åˆ—è¡¨
+	 * @param x å¹³æ»‘å› å­ï¼Œæš‚æ—¶å»ºè®®å¤§äº0.5ï¼›é€‰å–ç§å­èŠ‚ç‚¹æ—¶ï¼Œxè¶Šå¤§åˆ™èŠ‚ç‚¹åº¦æ•°è¶Šé‡è¦ï¼Œxè¶Šå°åˆ™ç§å­æ ‡ç­¾åœ¨åŸå§‹æ ‡ç­¾ä¸­å‡ºç°çš„æ¬¡æ•°è¶Šé‡è¦
+	 * @return ç§å­èŠ‚ç‚¹åœ¨ nodes_array ä¸­çš„å¯¹åº”ä¸‹æ ‡åˆ—è¡¨
 	 */
 	public int[] execute(Node[] nodes_array/*in/out*/, int[][] link_matrix/*in*/,String[] seed_label/*in*/,double x){
-		int K = seed_label.length;//ÖÖ×Ó±êÇ©ÊıÁ¿
-		int[] seed_node = new int[K];//×îÖÕĞèÒª·µ»ØµÄÖÖ×Ó½ÚµãÁĞ±í
-		int nodeSize = link_matrix.length;//½ÚµãµÄÊıÁ¿
+		int K = seed_label.length;//ç§å­æ ‡ç­¾æ•°é‡
+		int[] seed_node = new int[K];//æœ€ç»ˆéœ€è¦è¿”å›çš„ç§å­èŠ‚ç‚¹åˆ—è¡¨
+		int nodeSize = link_matrix.length;//èŠ‚ç‚¹çš„æ•°é‡
 		
 		for(int i=0;i<K;i++){
-			double[] suit = new double[nodeSize];//ÎªËùÓĞ½Úµã½¨Á¢Õë¶ÔµÚi¸öÖÖ×Ó±êÇ©µÄsuitÖµÁĞ±í
+			double[] suit = new double[nodeSize];//ä¸ºæ‰€æœ‰èŠ‚ç‚¹å»ºç«‹é’ˆå¯¹ç¬¬iä¸ªç§å­æ ‡ç­¾çš„suitå€¼åˆ—è¡¨
 			int maxSuitIndex = 0;
-			//±éÀúËùÓĞ½Úµã£¬Õë¶ÔÃ¿¸ö½Úµãj¼ÆËãsuitÖµ
+			//éå†æ‰€æœ‰èŠ‚ç‚¹ï¼Œé’ˆå¯¹æ¯ä¸ªèŠ‚ç‚¹jè®¡ç®—suitå€¼
 			for(int j=0;j<nodeSize;j++){
-				double degree = (double)countDegree(j,link_matrix);//µÃµ½½ÚµãjµÄ¶È
-				double appear = (double)nodes_array[j].label_list.get(seed_label[i]);//±êÇ©iÔÚ½ÚµãjµÄÔ­Ê¼±êÇ©ÖĞ³öÏÖµÄ´ÎÊı
+				double degree = (double)countDegree(j,link_matrix);//å¾—åˆ°èŠ‚ç‚¹jçš„åº¦
+				double appear = (double)nodes_array[j].label_list.get(seed_label[i]);//æ ‡ç­¾iåœ¨èŠ‚ç‚¹jçš„åŸå§‹æ ‡ç­¾ä¸­å‡ºç°çš„æ¬¡æ•°
 				
-				suit[j] = degree*x + appear*(1-x);//¼ÆËã½ÚµãjµÄsuit
-				//¼ÇÂ¼×î´ósuitÖµµÄÏÂ±ê
+				suit[j] = degree*x + appear*(1-x);//è®¡ç®—èŠ‚ç‚¹jçš„suit
+				//è®°å½•æœ€å¤§suitå€¼çš„ä¸‹æ ‡
 				if(suit[j] >= suit[maxSuitIndex]){
 					maxSuitIndex = j;
 				}
 			}
 			
-			//¶ÔÓÚÏÂ±êÎª maxSuitIndex µÄ½Úµã£¬Çå¿Õ±êÇ©ÁĞ±í£¬¸³ÓèÖÖ×Ó±êÇ©i
+			//å¯¹äºä¸‹æ ‡ä¸º maxSuitIndex çš„èŠ‚ç‚¹ï¼Œæ¸…ç©ºæ ‡ç­¾åˆ—è¡¨ï¼Œèµ‹äºˆç§å­æ ‡ç­¾i
 		}
 		
 		return seed_node;
 	}
 	
 	/**
-	 * ¼ÆËãÖ¸¶¨½ÚµãµÄ¶È
-	 * @param nodeIndex Ö¸¶¨½ÚµãÔÚ¾ØÕóµÄÏÂ±ê
-	 * @param link_matrix ¹ØÁª¾ØÕó
-	 * @return ¸Ã½ÚµãµÄ¶È
+	 * è®¡ç®—æŒ‡å®šèŠ‚ç‚¹çš„åº¦
+	 * @param nodeIndex æŒ‡å®šèŠ‚ç‚¹åœ¨çŸ©é˜µçš„ä¸‹æ ‡
+	 * @param link_matrix å…³è”çŸ©é˜µ
+	 * @return è¯¥èŠ‚ç‚¹çš„åº¦
 	 */
 	private int countDegree(int nodeIndex, int[][] link_matrix){
-		int result = 0;//ËùÇó½ÚµãµÄ¶È
+		int result = 0;//æ‰€æ±‚èŠ‚ç‚¹çš„åº¦
 		int nodeSize = link_matrix.length;
-		//±éÀú¾ØÕóµÄµÚnodeIndexĞĞ£¬¼ÆËã1µÄÊıÁ¿
+		//éå†çŸ©é˜µçš„ç¬¬nodeIndexè¡Œï¼Œè®¡ç®—1çš„æ•°é‡
 		for(int i=0;i<nodeSize;i++){
 			if(link_matrix[nodeIndex][i] == 1){
 				result++;

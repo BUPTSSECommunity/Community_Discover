@@ -1,4 +1,4 @@
-package algorithm;
+ï»¿package algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,17 +7,17 @@ import data.Node;
 
 public class Algorithm_SeedLabel {
   /**
-   * @param nodes_array ½ÚµãÊı×é
-   * @param links_matrix ÁÚ½Ó¾ØÕó
-   * @param k ãĞÖµ
-   * @return seed_node_ref ÖÖ×Ó±êÇ©ÁĞ±í
+   * @param nodes_array èŠ‚ç‚¹æ•°ç»„
+   * @param links_matrix é‚»æ¥çŸ©é˜µ
+   * @param k é˜ˆå€¼
+   * @return seed_node_ref ç§å­æ ‡ç­¾åˆ—è¡¨
    */
   public String[] execute(Node[] nodes_array, int[] links_matrix, int k){
     String[] seed_node_ref = new String[k];
     Map<String, Label> map = new HashMap<String, Label>();
 		
     for (int i = 0; i < nodes_array.length; i++) {
-      //ĞÂ¼ÓÈë±êÇ©
+      //æ–°åŠ å…¥æ ‡ç­¾
       if (!map.containsKey(nodes_array[i].label)) {
         Label label = new Label();
         label.degree = nodes_array[i].degree;
@@ -25,7 +25,7 @@ public class Algorithm_SeedLabel {
         label.e = Math.pow(Math.E, -label.degree);
         label.name = nodes_array[i].label;
         map.put(nodes_array[i].label, label);
-      } else { //ÒÑÓĞµÄ±êÇ©
+      } else { //å·²æœ‰çš„æ ‡ç­¾
         Label l = map.get(nodes_array[i].label);
         l.degree += nodes_array[i].degree;
         l.total++;
@@ -35,7 +35,7 @@ public class Algorithm_SeedLabel {
     
     Label[] labels = map.values().toArray(new Label[map.size()]);
     
-    //¼ÆËãÃ¿¸ö±êÇ©µÄÓ°ÏìÁ¦
+    //è®¡ç®—æ¯ä¸ªæ ‡ç­¾çš„å½±å“åŠ›
     for (int i = 0; i < labels.length; i++) {
       labels[i].influence += labels[i].degree / labels[i].total + labels[i].e;
     }
@@ -50,15 +50,15 @@ public class Algorithm_SeedLabel {
 	}
   
   private class Label{
-    /** ¶ÈÊı */
+    /** åº¦æ•° */
     public int degree;
-    /** ³öÏÖ×Ü´ÎÊı */
+    /** å‡ºç°æ€»æ¬¡æ•° */
     public int total;
     /** e^(-d(Li)) */
     public double e;
-    /** Ó°ÏìÁ¦ */
+    /** å½±å“åŠ› */
     public double influence;
-    /** ±êÇ©Ãû */
+    /** æ ‡ç­¾å */
     public String name;
     
     public Label() {
@@ -69,7 +69,7 @@ public class Algorithm_SeedLabel {
     }
   }
     
-  //¿ìËÙÅÅĞò
+  //å¿«é€Ÿæ’åº
   private void quick_sort(Label s[], int l, int r)
   {
       if (l < r)
@@ -79,23 +79,23 @@ public class Algorithm_SeedLabel {
           Label x = s[l];
           while (i < j)
           {
-              while(i < j && s[j].influence >= x.influence) // ´ÓÓÒÏò×óÕÒµÚÒ»¸öĞ¡ÓÚxµÄÊı
+              while(i < j && s[j].influence >= x.influence) // ä»å³å‘å·¦æ‰¾ç¬¬ä¸€ä¸ªå°äºxçš„æ•°
                  j--;  
               if(i < j) 
                 s[i++] = s[j];
         
-              while(i < j && s[i].influence < x.influence) // ´Ó×óÏòÓÒÕÒµÚÒ»¸ö´óÓÚµÈÓÚxµÄÊı
+              while(i < j && s[i].influence < x.influence) // ä»å·¦å‘å³æ‰¾ç¬¬ä¸€ä¸ªå¤§äºç­‰äºxçš„æ•°
                 i++;  
               if(i < j) 
                 s[j--] = s[i];
           }
           s[i] = x;
-          quick_sort(s, l, i - 1); // µİ¹éµ÷ÓÃ 
+          quick_sort(s, l, i - 1); // é€’å½’è°ƒç”¨ 
           quick_sort(s, i + 1, r);
       }
   }
   
-  //½»»»±êÇ©£¬Ö»ĞèÒª½»»»Ãû³ÆºÍÓ°ÏìÁ¦¼´¿É
+  //äº¤æ¢æ ‡ç­¾ï¼Œåªéœ€è¦äº¤æ¢åç§°å’Œå½±å“åŠ›å³å¯
   private void swap(Label a, Label b) {
     String tmp_s = a.name;
     a.name = b.name;
