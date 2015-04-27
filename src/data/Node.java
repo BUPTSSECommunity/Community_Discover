@@ -16,6 +16,8 @@ public class Node {
   public HashMap<String,Integer> label_list = new HashMap<String, Integer>();
   /**该节点初始标签*/
   public String label;
+  /**节点度数*/
+  public int degree;
   
   /**
    * 向标签列表中添加一个标签，如果该标签存在，则标签计数加1
