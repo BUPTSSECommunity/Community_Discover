@@ -12,7 +12,7 @@ public class Algorithm_SeedLabel {
    * @param k 阈值
    * @return seed_node_ref 种子标签列表
    */
-  public String[] execute(Node[] nodes_array, int[] links_matrix, int k){
+  public String[] execute(Node[] nodes_array, int[][] links_matrix, int k){
     String[] seed_node_ref = new String[k];
     Map<String, Label> map = new HashMap<String, Label>();
 		
